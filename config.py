@@ -46,8 +46,12 @@ class Settings:
     """Centralized configuration object for the RAG pipeline."""
     def __init__(self):
         # LLM Settings
+        self.llm_provider: str = os.getenv("LLM_PROVIDER", "openai")  # "openai", "groq", "ollama", "openrouter", "local"
         self.openai_api_key: str = os.getenv("OPENAI_API_KEY", "")
+        self.groq_api_key: str = os.getenv("GROQ_API_KEY", "")
+        self.llm_api_key: str = os.getenv("LLM_API_KEY", os.getenv("OPENAI_API_KEY", os.getenv("GROQ_API_KEY", "")))
         self.llm_model: str = os.getenv("LLM_MODEL", "gpt-4o-mini")
+        self.llm_base_url: str = os.getenv("LLM_BASE_URL", "")
         self.llm_temperature: float = float(os.getenv("LLM_TEMPERATURE", "0.0"))
 
         # Embedding Settings
