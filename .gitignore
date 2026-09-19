@@ -26,6 +26,9 @@ data/processed/*
 !data/processed/.gitkeep
 data/eval/*
 !data/eval/.gitkeep
+!data/eval/test_dataset.json
+!data/eval/eval_results.md
+!data/eval/eval_results.csv
 
 # Output and Evaluation results
 eval_results/

@@ -1,0 +1,212 @@
+[
+  {
+    "id": "qa_1",
+    "category": "Deployment",
+    "question": "How do I deploy an application to Streamlit Community Cloud?",
+    "ground_truth": "To deploy an app on Streamlit Community Cloud, sign in to share.streamlit.io using your GitHub account, click 'New app', select your repository, branch, and main file path, and click 'Deploy'.",
+    "target_url": "https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/deploy"
+  },
+  {
+    "id": "qa_2",
+    "category": "Dependencies",
+    "question": "How do I specify Python package dependencies for my Community Cloud app?",
+    "ground_truth": "You specify Python package dependencies by including a requirements.txt, Pipfile, or pyproject.toml in the root directory or root repository of your app.",
+    "target_url": "https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/app-dependencies"
+  },
+  {
+    "id": "qa_3",
+    "category": "Dependencies",
+    "question": "How do I install Linux system-level dependencies for my app?",
+    "ground_truth": "Add a packages.txt file in your repository containing the apt package names, with one package name per line.",
+    "target_url": "https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/app-dependencies"
+  },
+  {
+    "id": "qa_4",
+    "category": "Secrets Management",
+    "question": "Where should I store API keys and passwords in Streamlit Community Cloud?",
+    "ground_truth": "Store API keys and sensitive credentials in Community Cloud Secrets via the App Settings > Secrets menu, or locally in .streamlit/secrets.toml (which should be added to .gitignore).",
+    "target_url": "https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management"
+  },
+  {
+    "id": "qa_5",
+    "category": "Secrets Management",
+    "question": "How do I access configured secrets in my Python code?",
+    "ground_truth": "You access configured secrets using st.secrets like a standard Python dictionary, for example st.secrets['DB_PASSWORD'] or st.secrets.db_credentials.password.",
+    "target_url": "https://docs.streamlit.io/deploy/concepts/secrets"
+  },
+  {
+    "id": "qa_6",
+    "category": "Caching",
+    "question": "What is the difference between st.cache_data and st.cache_resource?",
+    "ground_truth": "st.cache_data is recommended for functions that return data (dataframes, dicts, strings) by serializing outputs, while st.cache_resource is used for global non-serializable objects like database connections, ML models, and threads.",
+    "target_url": "https://docs.streamlit.io/develop/concepts/architecture/caching"
+  },
+  {
+    "id": "qa_7",
+    "category": "Caching",
+    "question": "How do I clear cached data programmatically in Streamlit?",
+    "ground_truth": "You can clear cached data programmatically by calling st.cache_data.clear() or st.cache_resource.clear(), or by using function.clear().",
+    "target_url": "https://docs.streamlit.io/develop/concepts/architecture/caching"
+  },
+  {
+    "id": "qa_8",
+    "category": "Session State",
+    "question": "How do I retain user input across reruns in Streamlit?",
+    "ground_truth": "Use st.session_state to store and persist variables across user reruns, accessing or modifying it via dictionary or attribute syntax like st.session_state['key'] = value.",
+    "target_url": "https://docs.streamlit.io/develop/concepts/architecture/session-state"
+  },
+  {
+    "id": "qa_9",
+    "category": "Architecture",
+    "question": "How does Streamlit execute Python script logic?",
+    "ground_truth": "Streamlit executes the entire Python script from top to bottom whenever an interactive widget is modified or a rerun is triggered.",
+    "target_url": "https://docs.streamlit.io/develop/concepts/architecture/run-your-app"
+  },
+  {
+    "id": "qa_10",
+    "category": "Forms",
+    "question": "How can I batch multiple widget inputs and prevent reruns on every keystroke?",
+    "ground_truth": "Wrap your input widgets inside a with st.form('form_key'): block and add an st.form_submit_button() to submit all inputs in a single rerun.",
+    "target_url": "https://docs.streamlit.io/develop/concepts/architecture/forms"
+  },
+  {
+    "id": "qa_11",
+    "category": "App Management",
+    "question": "How do I reboot my app on Streamlit Community Cloud?",
+    "ground_truth": "Open the app dashboard or in-app developer settings, click the three-dots menu or Manage app sidebar, and select 'Reboot app'.",
+    "target_url": "https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-app/reboot-your-app"
+  },
+  {
+    "id": "qa_12",
+    "category": "App Management",
+    "question": "How do I change the Python version of a deployed Community Cloud app?",
+    "ground_truth": "In your app's settings on Community Cloud, navigate to 'General' settings and choose the desired Python version from the dropdown menu, then save and reboot.",
+    "target_url": "https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-app/upgrade-python"
+  },
+  {
+    "id": "qa_13",
+    "category": "App Management",
+    "question": "How do I delete an app from Streamlit Community Cloud?",
+    "ground_truth": "Go to your Streamlit workspace dashboard at share.streamlit.io, locate your app card, click the three dots icon, and select 'Delete'.",
+    "target_url": "https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-app/delete-your-app"
+  },
+  {
+    "id": "qa_14",
+    "category": "Theming",
+    "question": "How do I customize the primary color and background theme in Streamlit?",
+    "ground_truth": "Configure themes in .streamlit/config.toml under the [theme] section by setting primaryColor, backgroundColor, secondaryBackgroundColor, and textColor.",
+    "target_url": "https://docs.streamlit.io/develop/concepts/configuration/theming-customize-colors-and-borders"
+  },
+  {
+    "id": "qa_15",
+    "category": "Theming",
+    "question": "Can users toggle between light and dark themes?",
+    "ground_truth": "Yes, users can toggle themes via the in-app hamburger menu under Settings > Theme, or you can set base = 'dark' / 'light' in config.toml.",
+    "target_url": "https://docs.streamlit.io/develop/concepts/configuration/theming-customize-colors-and-borders"
+  },
+  {
+    "id": "qa_16",
+    "category": "Testing",
+    "question": "What built-in testing framework does Streamlit provide for automated testing?",
+    "ground_truth": "Streamlit provides the AppTest framework (from streamlit.testing.v1 import AppTest) which enables headless simulation and asserting widget states and outputs with pytest.",
+    "target_url": "https://docs.streamlit.io/develop/concepts/app-testing/get-started"
+  },
+  {
+    "id": "qa_17",
+    "category": "Testing",
+    "question": "How do I run automated tests for a Streamlit app using AppTest?",
+    "ground_truth": "Initialize AppTest from your script using at = AppTest.from_file('app.py'), call at.run(), and use standard assertions on widget values like assert not at.exception.",
+    "target_url": "https://docs.streamlit.io/develop/concepts/app-testing/automate-tests"
+  },
+  {
+    "id": "qa_18",
+    "category": "Configuration",
+    "question": "How do I enable HTTPS support for a self-hosted Streamlit deployment?",
+    "ground_truth": "You can configure SSL certificates in .streamlit/config.toml under [server] using sslCertFile and sslKeyFile, or terminate TLS using a reverse proxy like NGINX or Caddy.",
+    "target_url": "https://docs.streamlit.io/develop/concepts/configuration/https-support"
+  },
+  {
+    "id": "qa_19",
+    "category": "Configuration",
+    "question": "How can I serve static files like images and CSS from a local directory in Streamlit?",
+    "ground_truth": "Enable static file serving in config.toml with [server] enableStaticServing = true and place files in a static/ folder at the root of your project.",
+    "target_url": "https://docs.streamlit.io/develop/concepts/configuration/serving-static-files"
+  },
+  {
+    "id": "qa_20",
+    "category": "Account",
+    "question": "How do I disconnect or change my linked GitHub account on Community Cloud?",
+    "ground_truth": "Go to your workspace settings on share.streamlit.io, find the Linked Accounts section, and manage your GitHub connection.",
+    "target_url": "https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-account/manage-your-github-connection"
+  },
+  {
+    "id": "qa_21",
+    "category": "Deployment",
+    "question": "Can I deploy a private GitHub repository on Streamlit Community Cloud?",
+    "ground_truth": "Yes, Community Cloud allows deploying apps from private GitHub repositories after granting Streamlit the required GitHub permissions.",
+    "target_url": "https://docs.streamlit.io/deploy/streamlit-community-cloud/get-started/connect-your-github-account"
+  },
+  {
+    "id": "qa_22",
+    "category": "Layout",
+    "question": "How do I organize widgets side-by-side in columns?",
+    "ground_truth": "Use st.columns, for example col1, col2 = st.columns(2), and place widgets inside each column using with col1: or col1.write().",
+    "target_url": "https://docs.streamlit.io/develop/concepts/design/layouts-and-containers"
+  },
+  {
+    "id": "qa_23",
+    "category": "Layout",
+    "question": "How do I create an expandable drawer or collapsible section in Streamlit?",
+    "ground_truth": "Use with st.expander('Title'): to create a collapsible container that users can expand or collapse interactively.",
+    "target_url": "https://docs.streamlit.io/develop/concepts/design/layouts-and-containers"
+  },
+  {
+    "id": "qa_24",
+    "category": "Dataframes",
+    "question": "How do I display an interactive, editable table in Streamlit?",
+    "ground_truth": "Use st.data_editor(df) to display an editable dataframe table where users can add, delete, and edit cells directly in the browser.",
+    "target_url": "https://docs.streamlit.io/develop/concepts/design/dataframes"
+  },
+  {
+    "id": "qa_25",
+    "category": "Architecture",
+    "question": "What is an experimental or partial rerun fragment in Streamlit?",
+    "ground_truth": "Using the @st.fragment decorator allows a specific function or container to rerun independently without rerunning the entire script from top to bottom.",
+    "target_url": "https://docs.streamlit.io/develop/concepts/architecture/fragments"
+  },
+  {
+    "id": "qa_26",
+    "category": "Deployment",
+    "question": "How do I deploy Streamlit with Docker in a custom container?",
+    "ground_truth": "Create a Dockerfile exposing port 8501, install requirements.txt, and set the ENTRYPOINT or CMD to streamlit run app.py --server.port=8501 --server.address=0.0.0.0.",
+    "target_url": "https://docs.streamlit.io/deploy/tutorials/docker"
+  },
+  {
+    "id": "qa_27",
+    "category": "Deployment",
+    "question": "How do I embed a deployed Streamlit app inside an iframe on my own website?",
+    "ground_truth": "Embed the app by adding an <iframe> element pointing to your app URL, and ensure enableCORS and enableXsrfProtection are properly configured.",
+    "target_url": "https://docs.streamlit.io/deploy/streamlit-community-cloud/share-your-app/embed-your-app"
+  },
+  {
+    "id": "qa_28",
+    "category": "Fallback / Edge Case",
+    "question": "How do I cook Italian lasagna from scratch?",
+    "ground_truth": "I don't know, please contact support.",
+    "target_url": ""
+  },
+  {
+    "id": "qa_29",
+    "category": "Fallback / Edge Case",
+    "question": "What is the stock price of Tesla in 2030?",
+    "ground_truth": "I don't know, please contact support.",
+    "target_url": ""
+  },
+  {
+    "id": "qa_30",
+    "category": "Fallback / Edge Case",
+    "question": "How do I replace the engine oil in a Toyota Camry?",
+    "ground_truth": "I don't know, please contact support.",
+    "target_url": ""
+  }
+]
