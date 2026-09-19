@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+.env.virtual/
+
+# Environment Variables & Secrets (CRITICAL: Never commit API keys or credentials)
+.env
+.env.*
+!.env.example
+
+# Typesense Local Data Directory
+typesense-data/
+
+# Data directories (ignore scraped raw documents to keep git repo light; sample data can be stored in data/processed or committed selectively)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/eval/*
+!data/eval/.gitkeep
+
+# Output and Evaluation results
+eval_results/
+*.csv
+*.xlsx
+
+# IDE / OS specific files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
