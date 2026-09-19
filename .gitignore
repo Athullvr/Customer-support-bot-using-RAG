@@ -34,6 +34,7 @@ data/eval/*
 eval_results/
 *.csv
 *.xlsx
+.files/
 
 # IDE / OS specific files
 .DS_Store
