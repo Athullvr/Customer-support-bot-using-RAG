@@ -189,36 +189,34 @@ def clean_html_to_markdown(html_content: str, base_url: str) -> Dict[str, str]:
         return {"title": title, "markdown": md_text}
 
 
-def fetch_article_urls_from_sitemap(sitemap_url: str, limit: int = 75) -> List[str]:
-    """Discover help/documentation URLs from sitemap XML."""
-    print(f"🔍 Fetching sitemap: {sitemap_url}")
-    xml_content = fetch_url_content(sitemap_url)
-    if not xml_content:
-        return []
+def fetch_article_urls_from_sitemap(sitemap_url: str = "https://docs.streamlit.io/sitemap.xml", limit: int = 75) -> List[str]:
+    """Discover help/documentation URLs from sitemap XMLs."""
+    print(f"🔍 Fetching sitemaps starting from: {sitemap_url}")
+    
+    # If root sitemap or specific sitemap
+    sitemaps_to_check = [
+        "https://docs.streamlit.io/sitemap-0.xml",
+        "https://docs.streamlit.io/sitemap-1.xml"
+    ] if "streamlit.io" in sitemap_url else [sitemap_url]
 
-    # Extract all <loc> tags via regex to work with or without bs4/lxml
-    locs = re.findall(r"<loc>(https?://[^<]+)</loc>", xml_content)
-
-    # Expand sub-sitemaps if any
-    sub_maps = [l for l in locs if l.endswith(".xml")]
-    if sub_maps:
-        all_locs = []
-        for sub_map in sub_maps[:2]:
-            sub_xml = fetch_url_content(sub_map)
-            if sub_xml:
-                all_locs.extend(re.findall(r"<loc>(https?://[^<]+)</loc>", sub_xml))
-        if all_locs:
-            locs = all_locs
+    all_locs = []
+    for sm in sitemaps_to_check:
+        xml_content = fetch_url_content(sm)
+        if xml_content:
+            locs = re.findall(r"<loc>(https?://[^<]+)</loc>", xml_content)
+            all_locs.extend(locs)
 
     filtered_urls = []
-    for u in locs:
+    for u in all_locs:
         if any(u.endswith(ext) for ext in [".png", ".jpg", ".jpeg", ".svg", ".pdf", ".zip", ".xml"]):
             continue
+        # Filter for guide, tutorial, deploy, concept, and support pages
         if any(term in u for term in ["/develop/concepts/", "/develop/quick-reference/", "/deploy/", "/develop/tutorials/", "/knowledge-base/", "/guide/", "/docs/"]):
-            filtered_urls.append(u)
+            if u not in filtered_urls:
+                filtered_urls.append(u)
 
     if len(filtered_urls) < 10:
-        filtered_urls = [u for u in locs if not u.endswith(".xml")]
+        filtered_urls = list(dict.fromkeys([u for u in all_locs if not u.endswith(".xml")]))
 
     return filtered_urls[:limit]
 
