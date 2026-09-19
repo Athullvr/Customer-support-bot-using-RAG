@@ -15,8 +15,9 @@ env/
 .env.*
 !.env.example
 
-# Typesense Local Data Directory
+# Typesense Local Data & Binary Directory
 typesense-data/
+.typesense_bin/
 
 # Data directories (ignore scraped raw documents to keep git repo light; sample data can be stored in data/processed or committed selectively)
 data/raw/*
