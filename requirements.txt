@@ -8,8 +8,9 @@ langchain-huggingface>=0.0.3
 # Search Engine & Vector Store
 typesense>=0.20.0
 
-# UI Framework
+# UI Frameworks
 streamlit>=1.35.0
+chainlit>=1.1.0
 
 # Embeddings & Open-Source LLM Utilities
 sentence-transformers>=3.0.0
